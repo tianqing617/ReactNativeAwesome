@@ -67,6 +67,7 @@ function App(): React.JSX.Element {
             ))}
         </View>
 
+        {/* 分隔线 */}
         <Separator />
       </ScrollView>
     </SafeAreaView>
