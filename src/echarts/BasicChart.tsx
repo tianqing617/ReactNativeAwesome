@@ -1,43 +1,69 @@
-import React, { useRef, useEffect } from 'react';
+// import { SkiaChart, SVGRenderer } from '@wuba/react-native-echarts';
+import { SvgChart, SVGRenderer } from '@wuba/react-native-echarts';
 import * as echarts from 'echarts/core';
-import { LineChart } from 'echarts/charts';
-import { GridComponent } from 'echarts/components';
-import { SkiaRenderer, SkiaChart } from '@wuba/react-native-echarts';
+import { useRef, useEffect } from 'react';
+import {
+  BarChart,
+} from 'echarts/charts';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+} from 'echarts/components';
 
-echarts.use([SkiaRenderer, LineChart, GridComponent]);
+// Register extensions
+echarts.use([
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  SVGRenderer,
+  // ...
+  BarChart,
+])
 
-function BasicChart() {
-  const skiaRef = useRef<any>(null);
+const E_HEIGHT = 250;
+const E_WIDTH = 300;
+
+// Initialize
+// @ts-ignore
+function ChartComponent({ option }) {
+  const chartRef = useRef<any>(null);
+
   useEffect(() => {
-    const option = {
-      xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          data: [150, 230, 224, 218, 135, 147, 260],
-          type: 'line',
-        },
-      ],
-    };
     let chart: any;
-    if (skiaRef.current) {
-      chart = echarts.init(skiaRef.current, 'light', {
-        // @ts-ignore
-        renderer: 'skia',
-        width: 400,
-        height: 400,
+    if (chartRef.current) {
+      // @ts-ignore
+      chart = echarts.init(chartRef.current, 'light', {
+        renderer: 'svg',
+        width: E_WIDTH,
+        height: E_HEIGHT,
       });
       chart.setOption(option);
     }
     return () => chart?.dispose();
-  }, []);
+  }, [option]);
 
-  return <SkiaChart ref={skiaRef} />;
+  // Choose your preferred chart component
+  // return <SkiaChart ref={chartRef} />;
+  return <SvgChart ref={chartRef} />;
 }
 
-export default BasicChart
+// Component usage
+export default function App() {
+  const option = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar',
+      },
+    ],
+  }
+  return <ChartComponent option={option} />
+}
