@@ -6,11 +6,9 @@ import { SkiaRenderer, SkiaChart } from '@wuba/react-native-echarts';
 
 echarts.use([SkiaRenderer, LineChart, GridComponent]);
 
-function BasicChart(): React.JSX.Element {
+function BasicChart() {
   const skiaRef = useRef<any>(null);
-
   useEffect(() => {
-    // 数据
     const option = {
       xAxis: {
         type: 'category',
@@ -26,7 +24,6 @@ function BasicChart(): React.JSX.Element {
         },
       ],
     };
-
     let chart: any;
     if (skiaRef.current) {
       chart = echarts.init(skiaRef.current, 'light', {
@@ -43,4 +40,4 @@ function BasicChart(): React.JSX.Element {
   return <SkiaChart ref={skiaRef} />;
 }
 
-export default BasicChart;
+export default BasicChart
