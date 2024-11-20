@@ -9,10 +9,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import BasicChart from './echarts/BasicChart.tsx'
 
 function getCellColor(num: number) {
   if (num > 0) {
@@ -69,6 +69,9 @@ function App(): React.JSX.Element {
 
         {/* 分隔线 */}
         <Separator />
+
+        {/* 图表 */}
+        <BasicChart />
       </ScrollView>
     </SafeAreaView>
   );
