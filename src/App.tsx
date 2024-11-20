@@ -12,7 +12,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-// import BasicChart from './echarts/BasicChart.tsx'
+import BasicChart from './echarts/BasicChart.tsx'
 
 function getCellColor(num: number) {
   if (num > 0) {
@@ -71,7 +71,7 @@ function App(): React.JSX.Element {
         <Separator />
 
         {/* 图表 */}
-        {/* <BasicChart /> */}
+        <BasicChart />
       </ScrollView>
     </SafeAreaView>
   );
