@@ -100,10 +100,12 @@ const styles = StyleSheet.create({
   },
 
   separator: {
-    marginVertical: 8,
+    backgroundColor: '#fff',
+    // paddingVertical: 8,
     // color: '#fff',
     borderBottomColor: '#737373',
-    // borderBottomColor: '#fff',
+    // borderColor: '#fff',
+    paddingVertical: 8,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
