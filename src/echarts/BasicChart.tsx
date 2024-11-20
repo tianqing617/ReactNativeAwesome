@@ -1,3 +1,4 @@
+import React from 'react';
 // import { SkiaChart, SVGRenderer } from '@wuba/react-native-echarts';
 import { SvgChart, SVGRenderer } from '@wuba/react-native-echarts';
 import * as echarts from 'echarts/core';
@@ -10,6 +11,7 @@ import {
   TooltipComponent,
   GridComponent,
 } from 'echarts/components';
+import { EChartsOption } from 'echarts'
 
 // Register extensions
 echarts.use([
@@ -25,8 +27,7 @@ const E_HEIGHT = 250;
 const E_WIDTH = 300;
 
 // Initialize
-// @ts-ignore
-function ChartComponent({ option }) {
+function ChartComponent({ option }: EChartsOption) {
   const chartRef = useRef<any>(null);
 
   useEffect(() => {
