@@ -7,6 +7,10 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 ## 项目说明
 * Node版本：v18.20.5
 * 使用npm作为包管理器
+```
+npm run ios
+npm run start
+```
 
 ## Step 1: Start the Metro Server
 
