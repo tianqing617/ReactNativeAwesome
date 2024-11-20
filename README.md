@@ -5,7 +5,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## 项目说明
-* Node版本：v18.17.0
+* Node版本：v18.20.5
 * 使用npm作为包管理器
 
 ## Step 1: Start the Metro Server
