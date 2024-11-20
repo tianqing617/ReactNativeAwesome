@@ -64,6 +64,11 @@ export default function App() {
         type: 'bar',
       },
     ],
+    grid: {
+      left: '18%',  // 增加左侧边距
+      right: '0%', // 增加右侧边距
+      containLabel: true
+    },
   }
   return <ChartComponent option={option} />
 }
