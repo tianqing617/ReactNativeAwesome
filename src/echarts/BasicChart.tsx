@@ -67,7 +67,7 @@ export default function App() {
     grid: {
       left: '18%',  // 增加左侧边距
       right: '0%', // 增加右侧边距
-      containLabel: true
+      containLabel: true, // 是否被包含在 grid 区域内
     },
   }
   return <ChartComponent option={option} />
