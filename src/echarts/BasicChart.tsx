@@ -41,6 +41,7 @@ function ChartComponent({ option }: EChartsOption) {
       });
       chart.setOption(option);
     }
+    // 防止内存泄漏
     return () => chart?.dispose();
   }, [option]);
 
