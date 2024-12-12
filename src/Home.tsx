@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
+// 导航页面
 // @ts-ignore
 const HomeScreen = ({ navigation }) => {
+  console.log('navigation', navigation)
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
