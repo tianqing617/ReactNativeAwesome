@@ -21,7 +21,8 @@ function App(): React.JSX.Element {
     <Stack.Navigator initialRouteName="Home">
     {/* <Stack.Navigator initialRouteName="Chart"> */}
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} options={{title: 'Home List'}} />
+      {/* TODO: 这里有类型问题，没有解决。去掉any可复现 */}
+      <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home List'}} />
       <Stack.Screen name="Chart" component={ChartScreen} />
     </Stack.Navigator>
   </NavigationContainer>
