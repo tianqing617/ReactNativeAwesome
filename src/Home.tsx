@@ -15,7 +15,7 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
       <Text>Home Screen</Text>
       <Button title="Welcome" onPress={() => handleRedirect('Welcome')} />
       <Button title="Chart" onPress={() => handleRedirect('Chart')} />
-      {/* <Button title="Chart" onPress={() => handleRedirect('ShoppingCart')} /> */}
+      <Button title="ShoppingCart" onPress={() => handleRedirect('ShoppingCart')} />
     </View>
   );
 };

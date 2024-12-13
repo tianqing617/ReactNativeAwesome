@@ -7,6 +7,7 @@ type RootStackParamList = {
   // Home: { title: string }
   Home: undefined
   Chart: undefined
+  // ShoppingCart: undefined
 };
 
 // 为 navigation 和 route 定义类型

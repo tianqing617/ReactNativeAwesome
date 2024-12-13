@@ -8,9 +8,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import WelcomeScreen from './Welcome.tsx'
 import HomeScreen from './Home.tsx'
 import ChartScreen from './Chart.tsx'
+import ShoppingCart from './views/shopping-cart'
 
 const Stack = createNativeStackNavigator()
 function App(): React.JSX.Element {
@@ -24,6 +26,7 @@ function App(): React.JSX.Element {
       <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home'}} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Chart" component={ChartScreen} />
+      <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
     </Stack.Navigator>
   </NavigationContainer>
   );
