@@ -1,33 +1,21 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RouteProp } from '@react-navigation/native';
+import { HomeProps } from './router'
 
-// 定义导航堆栈的类型
-type RootStackParamList = {
-  Home: { title: string }
-  Chart: undefined
-};
-
-// 为 navigation 和 route 定义类型
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
-type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
-
-type Props = {
-  navigation: HomeScreenNavigationProp;
-  route: HomeScreenRouteProp;
-};
 
 // 导航页面
-const HomeScreen: React.FC<Props> = ({ navigation }) => {
+const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
   console.log('navigation', navigation)
+  function handleRedirect(pageName: string, params?: any) {
+    navigation.navigate(pageName, params)
+  }
+
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Chart')}
-      />
+      <Button title="Welcome" onPress={() => handleRedirect('Welcome')} />
+      <Button title="Chart" onPress={() => handleRedirect('Chart')} />
+      {/* <Button title="Chart" onPress={() => handleRedirect('ShoppingCart')} /> */}
     </View>
   );
 };
