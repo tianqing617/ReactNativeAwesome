@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-function App(): React.JSX.Element {
+export default function App(): React.JSX.Element {
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
@@ -22,5 +22,3 @@ function App(): React.JSX.Element {
     fontWeight: '700',
   },
 }); */
-
-export default App;
