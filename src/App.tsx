@@ -20,7 +20,8 @@ function App(): React.JSX.Element {
   // <WelcomeScreen />
   return (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
+    {/* Home */}
+    <Stack.Navigator initialRouteName="ShoppingCart">
     {/* <Stack.Navigator initialRouteName="Chart"> */}
       {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
       <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home'}} />
