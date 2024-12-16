@@ -71,6 +71,8 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+
+        {/* 包含背景图片和Welcome to React Native文字 */}
         <Header />
         <View
           style={{
