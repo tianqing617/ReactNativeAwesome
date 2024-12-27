@@ -4,17 +4,18 @@ import {
   View,
   StyleSheet, Button,
 } from 'react-native';
+import { Product } from './config.ts'
 
-export default function Row(): React.JSX.Element {
+export default function ProductRow({ product }: { product: Product }): React.JSX.Element {
   return (
     <View style={styles.rowItem}>
-      <Text style={styles.rowText}>菠萝蜜</Text>
-      <Text style={styles.rowText}>30</Text>
+      <Text style={styles.rowText}>{product.name}</Text>
+      <Text style={styles.rowText}>{product.price}</Text>
 
       <View style={styles.buttonContainer}>
         {/* onPress={() => handleIncrement(product)} */}
         <Button title="+" />
-        <Text>3</Text>
+        <Text>{product.count}</Text>
         {/* onPress={() => handleDecrement(product)} */}
         <Button title="-" />
       </View>
