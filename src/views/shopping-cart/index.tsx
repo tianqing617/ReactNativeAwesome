@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Products } from './config.ts'
+import { Product, Products } from './config.ts'
 import ProductRow from './row.tsx'
 
 // region 定义枚举和类型
@@ -38,6 +38,30 @@ export default function ShoppingCart(): React.JSX.Element {
     })
   }, [])
 
+  // 操作、交互
+  const getUpdatedProducts = (product: Product) => {
+    const newProducts = [...products]
+
+    for (let index = 0; index < products.length; index++) {
+      if (products[index].id === product.id) {
+        newProducts[index] = product
+      }
+    }
+
+    return newProducts
+  }
+  const handleIncrement = (product: Product) => {
+    const newProduct: Product = { ...product, count: product.count + 1}
+    const newProducts: Products = getUpdatedProducts(newProduct)
+    setProducts(newProducts)
+  }
+  const handleDecrement = (product: Product) => {
+    const count = product.count - 1 >=0 ? product.count - 1 : 0
+    const newProduct: Product = { ...product, count: count }
+    const newProducts: Products = getUpdatedProducts(newProduct)
+    setProducts(newProducts)
+  }
+
   // 处理渲染逻辑
   if (requestStatus === RequestStatus.ERROR) {
     return <Text>网络出错了</Text>;
@@ -60,14 +84,12 @@ export default function ShoppingCart(): React.JSX.Element {
         <View>
           {products.map(pItem => (
             <ProductRow
-              product={pItem}
               key={pItem.id}
+              product={pItem}
+              handleIncrement={handleIncrement}
+              handleDecrement={handleDecrement}
             />
           ))}
-          {/* handleIncrement={handleIncrement}
-          handleDecrement={handleDecrement}
-          product={product}
-          key={product.id} */}
         </View>
 
         <Text style={styles.cartTotal}>总价：{total}</Text>

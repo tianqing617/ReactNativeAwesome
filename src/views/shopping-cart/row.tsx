@@ -6,18 +6,23 @@ import {
 } from 'react-native';
 import { Product } from './config.ts'
 
-export default function ProductRow({ product }: { product: Product }): React.JSX.Element {
+interface PolicyProductProps {
+  product: Product
+  handleIncrement: () => void
+  handleDecrement: () => void
+}
+export default function ProductRow({ product, handleIncrement, handleDecrement }: PolicyProductProps): React.JSX.Element {
   return (
     <View style={styles.rowItem}>
       <Text style={styles.rowText}>{product.name}</Text>
       <Text style={styles.rowText}>{product.price}</Text>
 
       <View style={styles.buttonContainer}>
-        {/* onPress={() => handleIncrement(product)} */}
-        <Button title="+" />
+        
+        <Button title="+" onPress={() => handleIncrement(product)} />
         <Text>{product.count}</Text>
-        {/* onPress={() => handleDecrement(product)} */}
-        <Button title="-" />
+        
+        <Button title="-" onPress={() => handleDecrement(product)} />
       </View>
     </View>
   );
