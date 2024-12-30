@@ -56,7 +56,7 @@ export default function ShoppingCart(): React.JSX.Element {
     setProducts(newProducts)
   }
   const handleDecrement = (product: Product) => {
-    const count = product.count - 1 >=0 ? product.count - 1 : 0
+    const count = product.count - 1 >= 0 ? product.count - 1 : 0
     const newProduct: Product = { ...product, count: count }
     const newProducts: Products = getUpdatedProducts(newProduct)
     setProducts(newProducts)
