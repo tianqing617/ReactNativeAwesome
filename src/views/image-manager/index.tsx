@@ -12,6 +12,7 @@ export default function App(): React.JSX.Element {
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
     >
+      {/* 网络图片、本地图片、Base64图片，示例： */}
       <View>
         <Image
           style={{width: 200, height: 200}}
