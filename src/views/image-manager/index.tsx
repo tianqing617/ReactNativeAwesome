@@ -4,7 +4,6 @@ import {
   View,
   Image,
 } from 'react-native';
-// TODO: 为什么要使用ICON
 import ICON_BASE64 from './icon-base64';
 
 export default function App(): React.JSX.Element {
@@ -13,6 +12,7 @@ export default function App(): React.JSX.Element {
       contentInsetAdjustmentBehavior="automatic"
     >
       {/* 网络图片、本地图片、Base64图片，示例： */}
+      {/* defaultSource: 加载图像源时显示的静态图像。 */}
       <View>
         <Image
           style={{width: 200, height: 200}}
@@ -22,10 +22,12 @@ export default function App(): React.JSX.Element {
         {/* TODO: 未加载成功 */}
         <Image
           style={{width: 200, height: 200}}
-          source={{
-            uri: 'https://share.cleanshot.com/TxtbSk5d',
-          }}
+          src={'https://share.cleanshot.com/TxtbSk5d'}
           defaultSource={{uri: ICON_BASE64}}
+        />
+        <Image
+          style={{width: 60, height: 60}}
+          source={{uri: ICON_BASE64}}
         />
       </View>
     </ScrollView>
