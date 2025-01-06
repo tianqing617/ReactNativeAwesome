@@ -6,5 +6,6 @@ module.exports = {
     'react-native/no-inline-styles': 'off',
     'react/self-closing-comp': 'off',
     'no-trailing-spaces': 'off',
+    'comma-dangle': 'off',
   },
 };
