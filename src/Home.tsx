@@ -16,6 +16,11 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
       <Button title="Welcome" onPress={() => handleRedirect('Welcome')} />
       <Button title="Chart" onPress={() => handleRedirect('Chart')} />
       <Button title="ShoppingCart" onPress={() => handleRedirect('ShoppingCart')} />
+
+      {/* 滚动列表 */}
+      <Button title="ScrollView" onPress={() => handleRedirect('ScrollView')} />
+      <Button title="FlatList" onPress={() => handleRedirect('FlatList')} />
+      <Button title="RecycleListView" onPress={() => handleRedirect('RecycleListView')} />
     </View>
   );
 };
