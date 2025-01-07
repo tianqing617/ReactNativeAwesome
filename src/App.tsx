@@ -17,7 +17,7 @@ import ImageManager from './views/image-manager'
 // 滚动列表
 import ScrollViewDemo from './views/scroll-list/ScrollView.tsx'
 import FlatListDemo from './views/scroll-list/FlatList.tsx'
-import RecycleListViewDemo from './views/scroll-list/RecycleListView.tsx'
+// import RecycleListViewDemo from './views/scroll-list/RecycleListView.tsx'
 
 const Stack = createNativeStackNavigator()
 function App(): React.JSX.Element {
@@ -37,7 +37,7 @@ function App(): React.JSX.Element {
       {/* 滚动列表 */}
       <Stack.Screen name="ScrollView" component={ScrollViewDemo} />
       <Stack.Screen name="FlatList" component={FlatListDemo} />
-      <Stack.Screen name="RecycleListView" component={RecycleListViewDemo} />
+      {/* <Stack.Screen name="RecycleListView" component={RecycleListViewDemo} /> */}
     </Stack.Navigator>
   </NavigationContainer>
   );

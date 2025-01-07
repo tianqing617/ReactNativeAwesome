@@ -20,7 +20,8 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
       {/* 滚动列表 */}
       <Button title="ScrollView" onPress={() => handleRedirect('ScrollView')} />
       <Button title="FlatList" onPress={() => handleRedirect('FlatList')} />
-      <Button title="RecycleListView" onPress={() => handleRedirect('RecycleListView')} />
+      {/* 未实现，需要时看示例代码：src/views/scroll-list/RecycleListView.tsx.bak */}
+      {/* <Button title="RecycleListView" onPress={() => handleRedirect('RecycleListView')} /> */}
     </View>
   );
 };
