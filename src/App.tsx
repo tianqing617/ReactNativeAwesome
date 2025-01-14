@@ -18,6 +18,7 @@ import ImageManager from './views/image-manager'
 import ScrollViewDemo from './views/scroll-list/ScrollView.tsx'
 import FlatListDemo from './views/scroll-list/FlatList.tsx'
 // import RecycleListViewDemo from './views/scroll-list/RecycleListView.tsx'
+import HomePage from './HomePage/index.tsx'
 
 const Stack = createNativeStackNavigator()
 function App(): React.JSX.Element {
@@ -26,8 +27,8 @@ function App(): React.JSX.Element {
   return (
   <NavigationContainer>
     {/* Home */}
-    <Stack.Navigator initialRouteName="Home">
-    {/* <Stack.Navigator initialRouteName="ImageManager"> */}
+    {/* <Stack.Navigator initialRouteName="Home"> */}
+    <Stack.Navigator initialRouteName="HomePage">
       {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
       <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home'}} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
@@ -38,6 +39,8 @@ function App(): React.JSX.Element {
       <Stack.Screen name="ScrollView" component={ScrollViewDemo} />
       <Stack.Screen name="FlatList" component={FlatListDemo} />
       {/* <Stack.Screen name="RecycleListView" component={RecycleListViewDemo} /> */}
+      {/* 电商首页 */}
+      <Stack.Screen name="HomePage" component={HomePage} />
     </Stack.Navigator>
   </NavigationContainer>
   );

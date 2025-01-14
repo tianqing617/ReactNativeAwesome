@@ -22,6 +22,8 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
       <Button title="FlatList" onPress={() => handleRedirect('FlatList')} />
       {/* 未实现，需要时看示例代码：src/views/scroll-list/RecycleListView.tsx.bak */}
       {/* <Button title="RecycleListView" onPress={() => handleRedirect('RecycleListView')} /> */}
+      {/* 电商首页 */}
+      <Button title="HomePage" onPress={() => handleRedirect('HomePage')} />
     </View>
   );
 };
