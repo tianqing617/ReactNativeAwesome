@@ -1,19 +1,15 @@
 import React from 'react';
 import {
-  ScrollView,
-  Text,
   View,
 } from 'react-native';
+import Grid from '../../HomePage/components/Grid'
+import { TextGridData } from './config.ts'
 
 export default function App(): React.JSX.Element {
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-    >
-      <View>
-        <Text>Blank Screen</Text>
-      </View>
-    </ScrollView>
+    <View>
+      <Grid data={TextGridData}></Grid>
+    </View>
   );
 }
 
