@@ -6,6 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import TextGrid from './TextGrid.tsx'
+import NormalGrid from './NormalGrid.tsx'
 
 export default function App(): React.JSX.Element {
   return (
@@ -15,7 +16,7 @@ export default function App(): React.JSX.Element {
       <View style={styles.titleWrapper}><Text style={styles.title}>示例一</Text></View>
       <TextGrid />
       <View style={styles.titleWrapper}><Text style={styles.title}>示例二</Text></View>
-      {/* <NormalGrid /> */}
+      <NormalGrid />
       <View style={styles.titleWrapper}><Text style={styles.title}>示例三</Text></View>
       {/* 未实现 */}
       {/* <CustomGrid /> */}
