@@ -29,7 +29,7 @@ function App(): React.JSX.Element {
   <NavigationContainer>
     {/* Home */}
     {/* <Stack.Navigator initialRouteName="Home"> */}
-    <Stack.Navigator initialRouteName="HomePage">
+    <Stack.Navigator initialRouteName="GridPage">
       {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
       <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home'}} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
