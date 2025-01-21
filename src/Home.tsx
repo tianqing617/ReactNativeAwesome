@@ -24,6 +24,7 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
       {/* <Button title="RecycleListView" onPress={() => handleRedirect('RecycleListView')} /> */}
       {/* 电商首页 */}
       <Button title="HomePage" onPress={() => handleRedirect('HomePage')} />
+      <Button title="GridPage" onPress={() => handleRedirect('GridPage')} />
     </View>
   );
 };

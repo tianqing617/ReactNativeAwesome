@@ -19,6 +19,7 @@ import ScrollViewDemo from './views/scroll-list/ScrollView.tsx'
 import FlatListDemo from './views/scroll-list/FlatList.tsx'
 // import RecycleListViewDemo from './views/scroll-list/RecycleListView.tsx'
 import HomePage from './HomePage/index.tsx'
+import GridPage from './views/grid-demo'
 
 const Stack = createNativeStackNavigator()
 function App(): React.JSX.Element {
@@ -41,6 +42,8 @@ function App(): React.JSX.Element {
       {/* <Stack.Screen name="RecycleListView" component={RecycleListViewDemo} /> */}
       {/* 电商首页 */}
       <Stack.Screen name="HomePage" component={HomePage} />
+      {/* Grid组件示例 */}
+      <Stack.Screen name="GridPage" component={GridPage} />
     </Stack.Navigator>
   </NavigationContainer>
   );
