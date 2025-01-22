@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  ScrollView,
-  Text,
   View,
   SafeAreaView,
 } from 'react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import TopBar from './features/TopBar'
+import List from './features/List'
 
 const queryClient = new QueryClient({
   // queries：指定与查询相关的默认配置。retry：定义查询失败时的重试次数。
@@ -26,13 +25,7 @@ const App: React.FC = () => {
         <TopBar />
 
         {/* 金刚位 + 瀑布流卡片 */}
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-        >
-          <View>
-            <Text>Blank Screen</Text>
-          </View>
-        </ScrollView>
+        <List />
       </SafeAreaView>
     </QueryClientProvider>
   );
