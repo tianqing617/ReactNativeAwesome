@@ -3,14 +3,14 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { NormalGridData } from '../../../views/grid-demo/config.ts'
-import Grid from '../../components/Grid'
+import Icons from '../Icons'
 
 
 export default function App(): React.JSX.Element {
   return (
+    // 实现金刚位、无限列表
     <View style={styles.container}>
-      <Grid data={NormalGridData}></Grid>
+      <Icons></Icons>
     </View>
   );
 }
