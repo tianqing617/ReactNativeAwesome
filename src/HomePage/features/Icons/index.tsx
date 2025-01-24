@@ -48,8 +48,8 @@ export const queryRecyclerIcons = async (): Promise<CateIconType[]> => {
 };
 // queryRecyclerIcons()
 
-// 金刚位，支持左、右横向滑动
-const wrapperHeight = 200;
+// 1. 定义容器的宽和高
+// const wrapperHeight = 200;
 const windowWidth = Dimensions.get('window').width;
 
 export default function CateIcons({ row }: { row: CateIconType[]}): React.JSX.Element {
@@ -61,13 +61,13 @@ export default function CateIcons({ row }: { row: CateIconType[]}): React.JSX.El
   // 金刚位 页数
   const [indicator, setIndicator] = useState(0);
 
-  // TODO: width与height不确定
-  const height = 300
+  // 2. 定义Grid的宽和高
+  const height = 200
   const width = windowWidth
   const wrapperStyle = {height, width};
 
   const indicatorHeight = 5;
-  const gridStyle = [styles.wrapper, {height: height - indicatorHeight, width}];
+  const gridStyle = [{height: height - indicatorHeight, width}];
 
   return (
     <View style={wrapperStyle}>
@@ -120,9 +120,10 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginVertical: 12,
   },
+  // 容器的宽和高
   wrapper: {
     width: windowWidth,
-    height: wrapperHeight, // 注意： wrapper.height > iconStyle.height*2
+    // height: wrapperHeight, // 注意： wrapper.height > iconStyle.height*2
   },
   itemStyle: {
     height: 80,
