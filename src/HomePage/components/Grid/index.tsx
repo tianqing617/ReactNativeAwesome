@@ -15,7 +15,8 @@ import {
 interface PolicyGridData {
   icon?: string // 图标，url地址，或base64
   text: string // 文字
-  onPress?: (params: { icon?: string, text: string }) => void // 点击事件，定义类型
+  // { icon?: string, text: string }
+  onPress?: (params: any) => void // 点击事件，定义类型
 }
 interface PolicyGridProps {
   data: PolicyGridData[], // 格子数据源

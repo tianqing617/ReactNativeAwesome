@@ -5,33 +5,38 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import { queryIcons, IconType } from '../../api/homeAPI.tsx'
+import { queryIcons } from '../../api/homeAPI.tsx'
 import Grid from '../../components/Grid'
-import { NormalGridData } from '../../../views/grid-demo/config.ts'
 
-export interface CateIconType extends IconType {
-  icon: string;
-  text: string;
-  onPress: () => void;
+export interface CateIconType {
+  id: string
+  text: string
+  icon: string
+  onPress: (data: CateIconType) => void;
 }
-export interface RecyclerIcons {
+/* export interface RecyclerIcons {
   width: number;
   height: number;
   type: string;
   icons: CateIconType[];
+} */
+
+function handleIconClick(data: CateIconType) {
+  console.log('handleIconClick', data)
 }
-// @ts-ignore
-export const queryRecyclerIcons = async (): Promise<RecyclerIcons> => {
+// Promise<RecyclerIcons>
+export const queryRecyclerIcons = async (): Promise<CateIconType[]> => {
   const data = await queryIcons();
-  console.log('Icons-data', data)
+  // console.log('Icons-data', data)
 
   // 1. 转为 Grid 组件的格式
-  /* const cateIcons: CateIconType[] = data?.map(icon => ({
-    ...icon,
-    onPress: () => {},
-    icon: icon.image,
-    text: icon.title,
-  })); */
+  const cateIcons: CateIconType[] = data?.map(item => ({
+    id: item.id,
+    text: item.title,
+    icon: item.image,
+    onPress: handleIconClick,
+  }));
+  return cateIcons
 
   // 2. 转换为 RecyclerListView 需要的格式
   /* return {
@@ -47,7 +52,12 @@ export const queryRecyclerIcons = async (): Promise<RecyclerIcons> => {
 const wrapperHeight = 200;
 const windowWidth = Dimensions.get('window').width;
 
-export default function CateIcons(): React.JSX.Element {
+export default function CateIcons({ row }: { row: CateIconType[]}): React.JSX.Element {
+  console.log('CateIcons', row)
+  // 处理数据
+  const firstPartRow = row?.slice(0, 10) || []
+  const secondPartRow = row?.slice(10, 20) || []
+
   // 金刚位 页数
   const [indicator, setIndicator] = useState(0);
 
@@ -76,7 +86,7 @@ export default function CateIcons(): React.JSX.Element {
       >
         {/* 第一页 */}
         <Grid
-          data={NormalGridData}
+          data={firstPartRow}
           column={5}
           style={gridStyle}
           itemStyle={styles.itemStyle}
@@ -85,7 +95,7 @@ export default function CateIcons(): React.JSX.Element {
         ></Grid>
         {/* 第二页 */}
         <Grid
-          data={NormalGridData}
+          data={secondPartRow}
           column={5}
           style={gridStyle}
           itemStyle={styles.itemStyle}
