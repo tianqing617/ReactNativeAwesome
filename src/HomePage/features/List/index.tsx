@@ -1,34 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
+  Text,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import Icons from '../Icons'
 // useInfiniteQuery
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
-// import { RecyclerListView, DataProvider } from 'recyclerlistview';
+import { RecyclerListView, DataProvider } from 'recyclerlistview';
 import { queryRecyclerIcons } from '../Icons'
+import ImageRenderer from './ImageRenderer.tsx'
+import { getLayoutProvider } from './LayoutUtil.tsx'
 import { queryInfiniteList } from '../../api/homeAPI.tsx'
 
 export default function App(): React.JSX.Element {
   const query = useQuery({ queryKey: ['icon', 'list'], queryFn: queryRecyclerIcons })
   console.log('list-query', query)
 
-  // 列表内容
-  /* const [dataProvider, setDataProvider] = useState(
-    new DataProvider((r1, r2) => r1 !== r2)
-  )
-  // TODO: LayoutUtil.getLayoutProvider(0)
-  const [layoutProvider, setLayoutProvider] = useState(
-    // LayoutUtil.getLayoutProvider(0)
-  )
-  const [images, setImages] = useState([])
-  const [count, setCount] = useState(0)
-  const [viewType, setViewType] = useState(0) */
-
-  /* const infiniteListData = queryInfiniteList(1)
-  console.log('infiniteListData', infiniteListData) */
-
+  /* 列表请求调试
+  const infiniteListData = queryInfiniteList(1)
+  console.log('infiniteListData', infiniteListData)
+  */
   // 文档地址：https://tanstack.com/query/latest/docs/framework/react/reference/useInfiniteQuery
   const infiniteQuery = useInfiniteQuery({
     queryKey: ['infinite', 'list'],
@@ -45,10 +38,59 @@ export default function App(): React.JSX.Element {
   })
   console.log('infiniteQuery', infiniteQuery)
 
+  // region 列表内容
+  // RLV 的模板代码
+  let dp = new DataProvider((r1, r2) => {
+    return r1 !== r2;
+  });
+  if (infiniteQuery.data?.pages) {
+    dp = dp.cloneWithRows([...infiniteQuery.data.pages]);
+  }
+
+  // footer模板
+  const renderFooter = () => {
+    //Second view makes sure we don't unnecessarily change height of the list on this event. That might cause indicator to remain invisible
+    //The empty view can be removed once you've fetched all the data
+    return infiniteQuery.hasNextPage
+      ? <ActivityIndicator
+        style={{ margin: 10 }}
+        size="large"
+        color={'black'}
+      />
+      : <View style={{ height: 60 }}><Text>没有更多数据了</Text></View>;
+  }
+
+  // 图片模板
+  // TODO: 确认type和data类型是否正确
+  const rowRenderer = (type: number | string, data: string) => {
+    console.log('rowRenderer', type, data)
+    //We have only one view type so not checks are needed here
+    return <ImageRenderer imageUrl={data} />;
+  };
+
+  // 布局模板
+  const layoutProvider = getLayoutProvider(0)
+  // endregion
+
   return (
     // 实现金刚位、无限列表
     <View style={styles.container}>
       <Icons row={query.data as any}></Icons>
+
+      {dp.getSize() > 0 ? (
+        <RecyclerListView
+          onEndReached={()=> {
+            if (infiniteQuery.fetchStatus === 'idle') {
+              // onEndReached 返回值为void
+              infiniteQuery.fetchNextPage()
+            }
+          }}
+          dataProvider={dp}
+          layoutProvider={layoutProvider}
+          rowRenderer={rowRenderer}
+          renderFooter={renderFooter}
+        />
+      ) : null}
     </View>
   );
 }
