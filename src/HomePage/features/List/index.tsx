@@ -53,18 +53,16 @@ export default function RecyclerList(): React.JSX.Element {
     console.log('renderFooter', infiniteQuery.hasNextPage)
     //Second view makes sure we don't unnecessarily change height of the list on this event. That might cause indicator to remain invisible
     //The empty view can be removed once you've fetched all the data
-    // TODO: 此部分无法渲染成功，问题未知
     return infiniteQuery.hasNextPage
       ? <ActivityIndicator
         style={{ margin: 10 }}
         size="large"
         color={'black'}
       />
-      : <View style={{ height: 60 }}><Text>没有更多数据了</Text></View>;
+      : <View style={styles.noDataWrapper}><Text>没有更多数据了</Text></View>;
   }
 
   // 图片模板
-  // TODO: 确认type和data类型是否正确
   const rowRenderer = (type: number | string, data: string) => {
     console.log('rowRenderer', type, data)
     //We have only one view type so not checks are needed here
@@ -115,5 +113,10 @@ const styles = StyleSheet.create({
   listWrapper: {
     flex: 1,
     // height: 200,
+  },
+  noDataWrapper: {
+    height: 60,
+    lineHeight: 60,
+    textAlign: 'center',
   },
 });
