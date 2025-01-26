@@ -38,7 +38,7 @@ export async function queryInfiniteList(pageNum = 1, pageSize = 5) {
     const { data: responseJsonBeagle} = await axios.get<PolicyInfiniteList>('https://dog.ceo/api/breed/beagle/images');
     infiniteFullData = responseJsonHusky.message.concat(
       responseJsonBeagle.message
-    )
+    ).slice(0, 18) // 限制总数量为18张
   }
 
   const currentStartNum = (pageNum - 1) * pageSize

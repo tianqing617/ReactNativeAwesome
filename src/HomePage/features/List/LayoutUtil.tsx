@@ -14,6 +14,7 @@ export function getLayoutProvider(layoutNum: number) {
           return 'VSEL'; // Since we have just one view type
         },
         (type, dim, index) => {
+          console.log('LayoutProvider-setLayoutForType', type, dim, index)
           const columnWidth = getWindowWidth() / 3;
           switch (type) {
             case 'VSEL':

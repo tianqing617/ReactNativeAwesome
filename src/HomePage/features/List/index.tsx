@@ -14,7 +14,7 @@ import ImageRenderer from './ImageRenderer.tsx'
 import { getLayoutProvider } from './LayoutUtil.tsx'
 import { queryInfiniteList } from '../../api/homeAPI.tsx'
 
-export default function App(): React.JSX.Element {
+export default function RecyclerList(): React.JSX.Element {
   const query = useQuery({ queryKey: ['icon', 'list'], queryFn: queryRecyclerIcons })
   console.log('list-query', query)
 
@@ -33,7 +33,8 @@ export default function App(): React.JSX.Element {
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => {
       console.log('getNextPageParam', lastPage, allPages, lastPageParam, allPageParams)
-      return lastPage.length > 0 ? lastPageParam : null
+      return lastPage.length > 0 ? (lastPageParam + 1) : null
+      // return null
     }
   })
   console.log('infiniteQuery', infiniteQuery)
@@ -44,13 +45,15 @@ export default function App(): React.JSX.Element {
     return r1 !== r2;
   });
   if (infiniteQuery.data?.pages) {
-    dp = dp.cloneWithRows([...infiniteQuery.data.pages]);
+    dp = dp.cloneWithRows(infiniteQuery.data.pages.flat());
   }
 
   // footer模板
   const renderFooter = () => {
+    console.log('renderFooter', infiniteQuery.hasNextPage)
     //Second view makes sure we don't unnecessarily change height of the list on this event. That might cause indicator to remain invisible
     //The empty view can be removed once you've fetched all the data
+    // TODO: 此部分无法渲染成功，问题未知
     return infiniteQuery.hasNextPage
       ? <ActivityIndicator
         style={{ margin: 10 }}
@@ -70,21 +73,28 @@ export default function App(): React.JSX.Element {
 
   // 布局模板
   const layoutProvider = getLayoutProvider(0)
+
+  // 滚动至底部
+  const loadMoreData = ()=> {
+    if (infiniteQuery.fetchStatus === 'idle') {
+      // onEndReached 返回值为void
+      infiniteQuery.fetchNextPage()
+    }
+  }
   // endregion
 
   return (
     // 实现金刚位、无限列表
     <View style={styles.container}>
+      {/* 金刚位放入RecyclerList，再不研究。使用时再研究
+      核心在71行：const layoutProvider = new WaterfallLayoutProvider
+      地址：https://github.com/jiangleo/react-native-classroom/blob/main/src/12_HomePage/features/List/index.tsx */}
       <Icons row={query.data as any}></Icons>
 
       {dp.getSize() > 0 ? (
         <RecyclerListView
-          onEndReached={()=> {
-            if (infiniteQuery.fetchStatus === 'idle') {
-              // onEndReached 返回值为void
-              infiniteQuery.fetchNextPage()
-            }
-          }}
+          style={styles.listWrapper}
+          onEndReached={loadMoreData}
           dataProvider={dp}
           layoutProvider={layoutProvider}
           rowRenderer={rowRenderer}
@@ -98,7 +108,12 @@ export default function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // height: 520,
     marginTop: 10,
     backgroundColor: '#FAFAFA'
+  },
+  listWrapper: {
+    flex: 1,
+    // height: 200,
   },
 });
