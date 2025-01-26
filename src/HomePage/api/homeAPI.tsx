@@ -29,17 +29,22 @@ interface PolicyInfiniteList {
   message: string[]
   status: string // success
 }
+let infiniteFullData: string[] = []
 export async function queryInfiniteList(pageNum = 1, pageSize = 5) {
-  const { data: responseJsonHusky } = await axios.get<PolicyInfiniteList>('https://dog.ceo/api/breed/husky/images');
-  const { data: responseJsonBeagle} = await axios.get<PolicyInfiniteList>('https://dog.ceo/api/breed/beagle/images');
+  console.log('queryInfiniteList-pageNum', pageNum)
+  if (infiniteFullData.length < 1) {
+    console.log('queryInfiniteList-fetch')
+    const { data: responseJsonHusky } = await axios.get<PolicyInfiniteList>('https://dog.ceo/api/breed/husky/images');
+    const { data: responseJsonBeagle} = await axios.get<PolicyInfiniteList>('https://dog.ceo/api/breed/beagle/images');
+    infiniteFullData = responseJsonHusky.message.concat(
+      responseJsonBeagle.message
+    )
+  }
 
-  const fullData = responseJsonHusky.message.concat(
-    responseJsonBeagle.message
-  )
   const currentStartNum = (pageNum - 1) * pageSize
-  const filteredData = fullData.slice(
+  const filteredData = infiniteFullData.slice(
     currentStartNum,
-    Math.min(fullData.length, currentStartNum + pageSize)
+    Math.min(infiniteFullData.length, currentStartNum + pageSize)
   );
   return filteredData;
 }
