@@ -6,9 +6,13 @@
  */
 
 import React from 'react';
+import {
+  SafeAreaView,
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import WelcomeScreen from './Welcome.tsx'
 import HomeScreen from './Home.tsx'
@@ -27,18 +31,63 @@ import DialogScreen from './views/navigation/DialogScreen.tsx'
 
 const Stack = createNativeStackNavigator()
 const BottomTab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 
+// 顶部导航
+function TopTabDiscover() {
+  return (
+    <TopTab.Navigator initialRouteName="Recommend">
+      <TopTab.Screen name="Recommend" component={DefaultPage} options={{title: '推荐'}} />
+      <TopTab.Screen
+        name="Cat"
+        component={DefaultPage}
+        options={{title: '猫猫'}}
+      />
+      <TopTab.Screen
+        name="Dog"
+        component={DefaultPage}
+        options={{title: '狗狗'}}
+      />
+    </TopTab.Navigator>
+  );
+}
+function TopTabHome() {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <TopTab.Navigator initialRouteName="Follow">
+        <TopTab.Screen
+          name="Follow"
+          component={DefaultPage}
+          options={{title: '关注'}}
+        />
+        <TopTab.Screen
+          name="TopTabDiscover"
+          component={TopTabDiscover}
+          options={{title: '发现'}}
+        />
+        <TopTab.Screen
+          name="Location"
+          component={DefaultPage}
+          options={{title: '附近'}}
+        />
+      </TopTab.Navigator>
+    </SafeAreaView>
+  );
+}
 // 底部导航
 function BottomTabHome() {
   return (
     <BottomTab.Navigator
-      initialRouteName="My"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
       }}>
-      {/* <BottomTab.Screen name="Home" component={TopTabHome} options={{title: '首页'}} /> */}
-      <BottomTab.Screen name="Messages" component={DefaultPage} options={{title: '消息'}}/>
-      <BottomTab.Screen name="My" component={DefaultPage} options={{title: '我'}}/>
+      {/* 嵌套顶部标签导航 */}
+      <BottomTab.Screen name="Home" component={TopTabHome} options={{title: '首页'}} />
+
+      <BottomTab.Screen name="Messages" component={HomePage} options={{title: '动态'}}/>
+      {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
+      <BottomTab.Screen name="My" component={HomeScreen as any} options={{title: '我'}}/>
     </BottomTab.Navigator>
   );
 }
@@ -59,7 +108,8 @@ function App(): React.JSX.Element {
         component={BottomTabHome}
       />
 
-      {/* 2.顶部标签导航 */}
+      {/* 2.默认页 */}
+      <Stack.Screen name="Page" component={DefaultPage} />
       {/* 3.弹窗 */}
       <Stack.Screen
         options={{
@@ -70,9 +120,8 @@ function App(): React.JSX.Element {
         name="Modal"
         component={DialogScreen}
       />
+
       {/* 4.Page类页面 */}
-      {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
-      <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home'}} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Chart" component={ChartScreen} />
       <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
@@ -81,8 +130,8 @@ function App(): React.JSX.Element {
       <Stack.Screen name="ScrollView" component={ScrollViewDemo} />
       <Stack.Screen name="FlatList" component={FlatListDemo} />
       {/* <Stack.Screen name="RecycleListView" component={RecycleListViewDemo} /> */}
-      {/* 电商首页 */}
-      <Stack.Screen name="HomePage" component={HomePage} />
+      {/* 电商首页。放到底部导航中 */}
+      {/* <Stack.Screen name="HomePage" component={HomePage} /> */}
       {/* Grid组件示例 */}
       <Stack.Screen name="GridPage" component={GridPage} />
     </Stack.Navigator>
