@@ -23,6 +23,7 @@ import HomePage from './HomePage/index.tsx'
 import GridPage from './views/grid-demo'
 // Navigation
 import DefaultPage from './views/navigation/DefaultPage.tsx'
+import DialogScreen from './views/navigation/DialogScreen.tsx'
 
 const Stack = createNativeStackNavigator()
 const BottomTab = createBottomTabNavigator();
@@ -42,9 +43,8 @@ function BottomTabHome() {
   );
 }
 
+// 入口函数
 function App(): React.JSX.Element {
-  // <Text>测试</Text>
-  // <WelcomeScreen />
   return (
   <NavigationContainer>
     {/* Home */}
@@ -60,7 +60,17 @@ function App(): React.JSX.Element {
       />
 
       {/* 2.顶部标签导航 */}
-      {/* 3.Page类页面 */}
+      {/* 3.弹窗 */}
+      <Stack.Screen
+        options={{
+          presentation: 'transparentModal' , // card modal transparentModal
+          animation: 'fade',
+          headerShown: false,
+        }}
+        name="Modal"
+        component={DialogScreen}
+      />
+      {/* 4.Page类页面 */}
       {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
       <Stack.Screen name="Home" component={HomeScreen as any} options={{title: 'Home'}} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />

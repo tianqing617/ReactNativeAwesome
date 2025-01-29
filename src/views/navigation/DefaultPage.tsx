@@ -20,7 +20,7 @@ export default function DefaultPage(
         }}>
         跳转下一页
       </Text>
-      {/* TODO: 弹窗还未实现 */}
+      {/* 弹窗 */}
       <Text
         style={styles.button}
         onPress={() => {
