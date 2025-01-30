@@ -36,18 +36,18 @@ function Item({ source, onPress }: PolicyItem) {
   );
 }
 
-// TODO: navigation 的类型是？
-function handleRedirect(navigation: any, data: PolicyNTF) {
-  navigation.navigate('PetDetail', data);
-}
 export default function Discover({ navigation }: NativeStackScreenProps<ParamListBase>) {
+  const handleRedirect = (data: PolicyNTF) => {
+    navigation.navigate('PetDetail', data);
+  }
+
   return (
     <ScrollView style={{flex: 1}}>
       {ALL_NTF.map((NTF, index) => (
         <Item
           key={index}
           source={NTF.image}
-          onPress={() => handleRedirect(navigation, NTF)}
+          onPress={() => handleRedirect(NTF)}
         />
       ))}
     </ScrollView>
