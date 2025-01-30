@@ -1,37 +1,32 @@
-import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RouteProp, ParamListBase } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ParamListBase } from '@react-navigation/native';
+import { PolicyNTF } from '../views/navigation/discover-pets/config.ts'
 
-// 为通用导航参数，定义类型
+// 组件参数定义：为通用导航参数，定义类型
 export type PolicyCommonCpntProps = NativeStackScreenProps<ParamListBase>
+export type PolicyPetDetailProps = NativeStackScreenProps<{
+  PetDetail: PolicyNTF
+}, 'PetDetail'>
 
-type PolicyCommonProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList>;
-  route: RouteProp<RootStackParamList>;
-}
+// 路由定义
 // 定义导航堆栈的类型
-type RootStackParamList = {
-  // TODO: 这里类型定义，有什么用？
-  // Home: { title: string }
-  // Chart: undefined
-  // ShoppingCart: undefined
+export type RootStackParamList = {
+  BottomTabHome: undefined
+  Page: PolicyCommonCpntProps
+  Modal: PolicyCommonCpntProps
+  PetDetail: PolicyNTF
 
-  /* PetDetail: {
-    symbol: string;
-  }; */
+  Welcome: undefined
+  Chart: undefined
+  ShoppingCart: undefined
+  ImageManager: undefined
+  ScrollView: undefined
+  FlatList: undefined
+  GridPage: undefined
 };
 
 export type BottomStackParamList = {
   Home: undefined
   Messages: undefined
-  My: PolicyCommonProps
+  My: PolicyCommonCpntProps
 }
-
-// 为 navigation 和 route 定义类型
-/* type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
-type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>; */
-/*
-export type HomeProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
-  route: RouteProp<RootStackParamList, 'Home'>;
-};
-*/
