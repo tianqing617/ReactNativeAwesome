@@ -21,7 +21,7 @@ function getCellColor(num: number) {
 }
 const Separator = () => <View style={styles.separator} />;
 
-function App(): React.JSX.Element {
+function Chart(): React.JSX.Element {
   // Mock数据
   const tableData = [
     { name: '北京', num: '3286', grew: 14 },
@@ -106,4 +106,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Chart;
