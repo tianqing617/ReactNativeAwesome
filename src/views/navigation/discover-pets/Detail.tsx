@@ -7,6 +7,10 @@ import {
 } from 'react-native';
 import { PolicyPetDetailProps } from '../../../router'
 
+/**
+ * @param route 路由对象上主要是页面名字name、自定义参数params
+ * @param navigation 导航对象提供的主要功能有跳转回退、监听页面的生命周期和setParams、setOptions功能
+ */
 export default function PetDetail(
   {
     route,
