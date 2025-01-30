@@ -12,8 +12,8 @@ export type PolicyPetDetailProps = NativeStackScreenProps<{
 // 定义导航堆栈的类型
 export type RootStackParamList = {
   BottomTabHome: undefined
-  Page: PolicyCommonCpntProps
-  Modal: PolicyCommonCpntProps
+  Page: undefined
+  Modal: undefined
   PetDetail: PolicyNTF
 
   Welcome: undefined
@@ -28,5 +28,5 @@ export type RootStackParamList = {
 export type BottomStackParamList = {
   Home: undefined
   Messages: undefined
-  My: PolicyCommonCpntProps
+  My: undefined
 }
