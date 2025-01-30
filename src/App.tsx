@@ -28,6 +28,8 @@ import GridPage from './views/grid-demo'
 // Navigation
 import DefaultPage from './views/navigation/DefaultPage.tsx'
 import DialogScreen from './views/navigation/DialogScreen.tsx'
+import DiscoverPage from './views/navigation/discover-pets/index.tsx'
+
 
 const Stack = createNativeStackNavigator()
 const BottomTab = createBottomTabNavigator();
@@ -57,7 +59,7 @@ function TopTabHome() {
       <TopTab.Navigator initialRouteName="Follow">
         <TopTab.Screen
           name="Follow"
-          component={DefaultPage}
+          component={DiscoverPage}
           options={{title: '关注'}}
         />
         <TopTab.Screen
