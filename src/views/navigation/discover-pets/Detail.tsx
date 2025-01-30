@@ -11,7 +11,7 @@ import { PolicyNTF } from './config.ts'
 type PolicyNativeStackParams = {
   Detail: PolicyNTF;
 };
-export default function Detail(
+export default function PetDetail(
   {
     route,
     navigation
