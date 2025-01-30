@@ -14,7 +14,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import { BottomStackParamList } from './router'
+import { RootStackParamList, BottomStackParamList } from './router'
 import WelcomeScreen from './Welcome.tsx'
 import HomeScreen from './Home.tsx'
 import ChartScreen from './Chart.tsx'
@@ -32,7 +32,7 @@ import DialogScreen from './views/navigation/DialogScreen.tsx'
 import DiscoverPage from './views/navigation/discover-pets/index.tsx'
 import PetDetail from './views/navigation/discover-pets/Detail.tsx'
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator<RootStackParamList>()
 const BottomTab = createBottomTabNavigator<BottomStackParamList>();
 const TopTab = createMaterialTopTabNavigator();
 
@@ -139,7 +139,7 @@ function App(): React.JSX.Element {
       {/* 动物详情 */}
       <Stack.Screen
         name="PetDetail"
-        initialParams={{symbol: '$'}}
+        initialParams={{ symbol: '$' }}
         options={{
           title: '详情页',
           // TODO: 研究注释参数
@@ -152,8 +152,7 @@ function App(): React.JSX.Element {
           // animation: 'slide_from_bottom'
           // fullScreenGestureEnabled: true,
         }}
-        // TODO: 研究如何去除any
-        component={PetDetail as any}
+        component={PetDetail}
       />
     </Stack.Navigator>
   </NavigationContainer>

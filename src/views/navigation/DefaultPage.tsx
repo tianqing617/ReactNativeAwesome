@@ -4,11 +4,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import type { ParamListBase } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { PolicyCommonCpntProps } from '../../router'
 
 export default function DefaultPage(
-  { route, navigation }: NativeStackScreenProps<ParamListBase>
+  { route, navigation }: PolicyCommonCpntProps
 ): React.JSX.Element {
   return (
     <View style={styles.container}>

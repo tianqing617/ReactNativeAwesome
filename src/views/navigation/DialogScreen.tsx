@@ -6,11 +6,10 @@ import {
   Button,
   StyleSheet,
 } from 'react-native';
-import type { ParamListBase } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { PolicyCommonCpntProps } from '../../router'
 
 export default function DialogScreen(
-  { navigation }: NativeStackScreenProps<ParamListBase>
+  { navigation }: PolicyCommonCpntProps
 ): React.JSX.Element {
   return (
     <View style={styles.container}>

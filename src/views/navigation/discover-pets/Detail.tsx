@@ -5,17 +5,13 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { PolicyNTF } from './config.ts'
+import { PolicyPetDetailProps } from '../../../router'
 
-type PolicyNativeStackParams = {
-  Detail: PolicyNTF;
-};
 export default function PetDetail(
   {
     route,
     navigation
-  }: NativeStackScreenProps<PolicyNativeStackParams, 'Detail'>)
+  }: PolicyPetDetailProps)
 {
 
   useEffect(() => {
