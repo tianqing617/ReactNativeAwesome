@@ -29,7 +29,7 @@ import GridPage from './views/grid-demo'
 import DefaultPage from './views/navigation/DefaultPage.tsx'
 import DialogScreen from './views/navigation/DialogScreen.tsx'
 import DiscoverPage from './views/navigation/discover-pets/index.tsx'
-
+import PetDetail from './views/navigation/discover-pets/Detail.tsx'
 
 const Stack = createNativeStackNavigator()
 const BottomTab = createBottomTabNavigator();
@@ -136,6 +136,25 @@ function App(): React.JSX.Element {
       {/* <Stack.Screen name="HomePage" component={HomePage} /> */}
       {/* Grid组件示例 */}
       <Stack.Screen name="GridPage" component={GridPage} />
+      {/* 动物详情 */}
+      <Stack.Screen
+        name="PetDetail"
+        initialParams={{symbol: '$'}}
+        options={{
+          title: '详情页',
+          // TODO: 研究注释参数
+          // headerBackButtonMenuEnabled: false,
+          // headerBackTitle: '1234',
+          // headerBackTitleVisible: false,
+          // statusBarHidden: false,
+          // headerShown: false,
+          // gestureEnabled: false,
+          // animation: 'slide_from_bottom'
+          // fullScreenGestureEnabled: true,
+        }}
+        // TODO: 研究如何去除any
+        component={PetDetail as any}
+      />
     </Stack.Navigator>
   </NavigationContainer>
   );

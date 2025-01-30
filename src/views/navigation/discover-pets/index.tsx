@@ -38,7 +38,7 @@ function Item({ source, onPress }: PolicyItem) {
 
 // TODO: navigation 的类型是？
 function handleRedirect(navigation: any, data: PolicyNTF) {
-  navigation.navigate('Detail', data);
+  navigation.navigate('PetDetail', data);
 }
 export default function Discover({ navigation }: NativeStackScreenProps<ParamListBase>) {
   return (

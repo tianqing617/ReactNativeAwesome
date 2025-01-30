@@ -1,24 +1,90 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  ScrollView,
   Text,
   View,
+  Image,
+  StyleSheet,
 } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { PolicyNTF } from './config.ts'
 
-export default function App(): React.JSX.Element {
+type PolicyNativeStackParams = {
+  Detail: PolicyNTF;
+};
+export default function Detail(
+  {
+    route,
+    navigation
+  }: NativeStackScreenProps<PolicyNativeStackParams, 'Detail'>)
+{
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+      fullScreenGestureEnabled: true,
+    });
+  }, [navigation])
+
+  const {
+    describe,
+    price,
+    image,
+    symbol
+  } = route.params;
+
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-    >
-      <View>
-        <Text>Blank Screen</Text>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#fefefe',
+      }}>
+      <Text style={styles.text}>{describe}</Text>
+      <Image style={{width: 300, height: 300}} source={image} />
+
+      <View style={{flexDirection: 'row'}}>
+        <Text style={styles.text}>
+          {symbol}
+          {price}
+        </Text>
+        <Text style={[styles.button]}>Buy</Text>
+        <Text
+          style={[styles.button]}
+          onPress={() => {
+            if (symbol === '￥') {
+              return;
+            }
+            navigation.setParams({
+              symbol: '￥',
+              price: price * 6.3,
+            });
+          }}>
+          切换成￥
+        </Text>
+        <Text
+          style={[styles.button]}
+          onPress={() => {
+            navigation.setOptions({
+              title: '新标题',
+            });
+          }}>
+          设置新标题
+        </Text>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
-/* const styles = StyleSheet.create({
-  highlight: {
-    fontWeight: '700',
+const styles = StyleSheet.create({
+  text: {
+    alignSelf: 'center',
+    marginVertical: 10,
   },
-}); */
+  button: {
+    alignSelf: 'center',
+    marginVertical: 10,
+    marginLeft: 10,
+    backgroundColor: '#0ac'
+  },
+});

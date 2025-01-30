@@ -9,9 +9,6 @@ export interface PolicyNTF {
   image: ImageRequireSource;
   symbol?: string;
 }
-export type NativeStackParams = {
-  Detail: PolicyNTF;
-};
 
 export const ALL_NTF: PolicyNTF[] = [
   {
