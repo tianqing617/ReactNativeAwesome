@@ -15,10 +15,10 @@ export default function PetDetail(
 {
 
   useEffect(() => {
-    navigation.setOptions({
+    /* navigation.setOptions({
       headerShown: false,
       fullScreenGestureEnabled: true,
-    });
+    }); */
   }, [navigation])
 
   const {

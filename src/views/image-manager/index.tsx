@@ -20,7 +20,6 @@ export default function App(): React.JSX.Element {
           source={require('./insurance.jpeg')}
           defaultSource={{uri: ICON_BASE64}}
         />
-        {/* TODO: 未加载成功 */}
         <Image
           style={{width: 200, height: 200}}
           src={'https://lsky.11101122.xyz/i/2024/09/30/66fa212771c19.png'}

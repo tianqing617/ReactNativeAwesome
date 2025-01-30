@@ -142,15 +142,14 @@ function App(): React.JSX.Element {
         initialParams={{ symbol: '$' }}
         options={{
           title: '详情页',
-          // TODO: 研究注释参数
-          // headerBackButtonMenuEnabled: false,
-          // headerBackTitle: '1234',
+          headerBackButtonMenuEnabled: false,
+          headerBackTitle: '返回列表',
           // headerBackTitleVisible: false,
-          // statusBarHidden: false,
-          // headerShown: false,
+          statusBarHidden: false,
+          // headerShown: true,
           // gestureEnabled: false,
-          // animation: 'slide_from_bottom'
-          // fullScreenGestureEnabled: true,
+          animation: 'slide_from_bottom',
+          fullScreenGestureEnabled: true,
         }}
         component={PetDetail}
       />
