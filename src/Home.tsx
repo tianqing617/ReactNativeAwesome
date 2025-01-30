@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { HomeProps } from './router'
+import { PolicyCommonCpntProps } from './router'
 
 
 // 导航页面
-const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
+const HomeScreen = ({ navigation }: PolicyCommonCpntProps) => {
   console.log('navigation', navigation)
   function handleRedirect(pageName: string, params?: any) {
     navigation.navigate(pageName, params)

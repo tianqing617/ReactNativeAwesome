@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+import { BottomStackParamList } from './router'
 import WelcomeScreen from './Welcome.tsx'
 import HomeScreen from './Home.tsx'
 import ChartScreen from './Chart.tsx'
@@ -32,7 +33,7 @@ import DiscoverPage from './views/navigation/discover-pets/index.tsx'
 import PetDetail from './views/navigation/discover-pets/Detail.tsx'
 
 const Stack = createNativeStackNavigator()
-const BottomTab = createBottomTabNavigator();
+const BottomTab = createBottomTabNavigator<BottomStackParamList>();
 const TopTab = createMaterialTopTabNavigator();
 
 // 顶部导航
@@ -88,8 +89,7 @@ function BottomTabHome() {
       <BottomTab.Screen name="Home" component={TopTabHome} options={{title: '首页'}} />
 
       <BottomTab.Screen name="Messages" component={HomePage} options={{title: '动态'}}/>
-      {/* TODO: 这里有类型问题，没有解决。去掉any可复现？ */}
-      <BottomTab.Screen name="My" component={HomeScreen as any} options={{title: '我'}}/>
+      <BottomTab.Screen name="My" component={HomeScreen} options={{title: '我'}}/>
     </BottomTab.Navigator>
   );
 }
