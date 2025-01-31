@@ -31,6 +31,8 @@ function Ball() {
     })
     .onChange((e) => {
       console.log('onChange', e)
+      // {"absoluteX":175,"absoluteY":275.5,"changeX":8,"changeY":2,"eventName":"onGestureHandlerEvent","handlerTag":1,"numberOfPointers":1,"pointerType":0,"state":4,"target":2,"translationX":108.5,"translationY":142,"velocityX":63.38309016134245,"velocityY":15.203055819789565,"x":74.5,"y":71.5}
+
       // 第三步，在相应的拖拽回调中同步更新动画组件的共享值，也就是 x、y 轴坐标，实现基础的拖拽动效。
       offset.value = {
         x: e.changeX + offset.value.x,
