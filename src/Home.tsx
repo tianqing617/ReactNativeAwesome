@@ -23,6 +23,8 @@ const HomeScreen = ({ navigation }: PolicyCommonCpntProps) => {
       <Button title="GridPage" onPress={() => handleRedirect('GridPage')} />
       {/* 动画 */}
       <Button title="AnimatedBase" onPress={() => handleRedirect('AnimatedBase')} />
+      {/* 手势 */}
+      <Button title="PanGesture" onPress={() => handleRedirect('PanGesture')} />
     </View>
   );
 };
