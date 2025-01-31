@@ -27,7 +27,10 @@ function Item({ source, onPress }: PolicyItem) {
           borderColor: '#cfcfcf',
           borderRadius: 10,
           borderWidth: StyleSheet.hairlineWidth,
-          margin: 10,
+          // margin: 10,
+          marginHorizontal: 10,
+          marginTop: 16,
+          marginBottom: 0,
           backgroundColor: '#fff',
         }}>
         <Image style={{width: 100, height: 100}} source={source} />
