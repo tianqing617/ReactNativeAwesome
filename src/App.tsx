@@ -31,6 +31,8 @@ import DefaultPage from './views/navigation/DefaultPage.tsx'
 import DialogScreen from './views/navigation/DialogScreen.tsx'
 import DiscoverPage from './views/navigation/discover-pets/index.tsx'
 import PetDetail from './views/navigation/discover-pets/Detail.tsx'
+// 动画
+import AnimatedBase from './views/animated'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const BottomTab = createBottomTabNavigator<BottomStackParamList>();
@@ -99,8 +101,8 @@ function App(): React.JSX.Element {
   return (
   <NavigationContainer>
     {/* Home */}
-    {/* <Stack.Navigator initialRouteName="Home"> */}
-    <Stack.Navigator initialRouteName="BottomTabHome">
+    {/* <Stack.Navigator initialRouteName="BottomTabHome"> */}
+    <Stack.Navigator initialRouteName="AnimatedBase">
       {/* 1.底部标签导航 */}
       <Stack.Screen
         options={{
@@ -153,6 +155,8 @@ function App(): React.JSX.Element {
         }}
         component={PetDetail}
       />
+      {/* 动画 */}
+      <Stack.Screen name="AnimatedBase" component={AnimatedBase} />
     </Stack.Navigator>
   </NavigationContainer>
   );

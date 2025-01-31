@@ -23,6 +23,7 @@ export type RootStackParamList = {
   ScrollView: undefined
   FlatList: undefined
   GridPage: undefined
+  AnimatedBase: undefined
 };
 
 export type BottomStackParamList = {

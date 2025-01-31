@@ -20,9 +20,9 @@ const HomeScreen = ({ navigation }: PolicyCommonCpntProps) => {
       {/* 滚动列表 */}
       <Button title="ScrollView" onPress={() => handleRedirect('ScrollView')} />
       <Button title="FlatList" onPress={() => handleRedirect('FlatList')} />
-      {/* 未实现，需要时看示例代码：src/views/scroll-list/RecycleListView.tsx.bak */}
-      {/* <Button title="RecycleListView" onPress={() => handleRedirect('RecycleListView')} /> */}
       <Button title="GridPage" onPress={() => handleRedirect('GridPage')} />
+      {/* 动画 */}
+      <Button title="AnimatedBase" onPress={() => handleRedirect('AnimatedBase')} />
     </View>
   );
 };
