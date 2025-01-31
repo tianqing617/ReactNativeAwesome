@@ -6,6 +6,7 @@ import Animated, {
 import { View, Button } from 'react-native';
 import React from 'react';
 
+// 宽度切换
 function AnimatedStyleUpdateExample(): React.ReactElement {
   const randomWidth = useSharedValue(10);
 
