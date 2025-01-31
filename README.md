@@ -8,8 +8,14 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 * Node版本：v18.20.5
 * 使用npm作为包管理器
 ```
+// 不建议命令。建议使用start，启动成功后按i，再启动模拟器。
+// 避免不必要的报错，端口占用，或项目未打包完成，模拟器就已启动，造成代码未生效。
 npm run ios
+
+// 推荐命令
 npm run start
+// 清除缓存，并启动
+npm start -- --reset-cache
 ```
 
 ## Step 1: Start the Metro Server
