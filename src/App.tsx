@@ -103,8 +103,8 @@ function App(): React.JSX.Element {
   return (
   <NavigationContainer>
     {/* Home */}
-    {/* <Stack.Navigator initialRouteName="BottomTabHome"> */}
-    <Stack.Navigator initialRouteName="PanGesture">
+    <Stack.Navigator initialRouteName="BottomTabHome">
+    {/* <Stack.Navigator initialRouteName="PanGesture"> */}
       {/* 1.底部标签导航 */}
       <Stack.Screen
         options={{
