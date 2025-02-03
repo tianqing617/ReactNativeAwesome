@@ -25,6 +25,7 @@ const HomeScreen = ({ navigation }: PolicyCommonCpntProps) => {
       <Button title="AnimatedBase" onPress={() => handleRedirect('AnimatedBase')} />
       {/* 手势 */}
       <Button title="PanGesture" onPress={() => handleRedirect('PanGesture')} />
+      <Button title="PanAndScroll" onPress={() => handleRedirect('PanAndScroll')} />
     </View>
   );
 };

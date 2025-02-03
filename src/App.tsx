@@ -35,6 +35,7 @@ import PetDetail from './views/navigation/discover-pets/Detail.tsx'
 import AnimatedBase from './views/animated'
 // 手势
 import PanGesture from './views/gesture/pan.tsx'
+import PanAndScroll from './views/gesture/PanAndScrollView.tsx'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const BottomTab = createBottomTabNavigator<BottomStackParamList>();
@@ -161,6 +162,7 @@ function App(): React.JSX.Element {
       <Stack.Screen name="AnimatedBase" component={AnimatedBase} />
       {/* 手势 */}
       <Stack.Screen name="PanGesture" component={PanGesture} />
+      <Stack.Screen name="PanAndScroll" component={PanAndScroll} />
     </Stack.Navigator>
   </NavigationContainer>
   );

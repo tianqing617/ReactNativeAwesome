@@ -27,6 +27,7 @@ export type RootStackParamList = {
   AnimatedBase: undefined
 
   PanGesture: undefined
+  PanAndScroll: undefined
 };
 
 export type BottomStackParamList = {
