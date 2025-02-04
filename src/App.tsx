@@ -155,7 +155,7 @@ function App(): React.JSX.Element {
           statusBarHidden: false,
           // headerShown: true,
           // gestureEnabled: false,
-          animation: 'slide_from_bottom',
+          // animation: 'slide_from_bottom',
           fullScreenGestureEnabled: true,
         }}
         component={PetDetail}
