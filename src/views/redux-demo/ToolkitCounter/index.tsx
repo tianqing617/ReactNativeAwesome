@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import {
   useSelector,
   useDispatch,
@@ -68,8 +68,10 @@ function CounterApp() {
   return (
     <View style={styles.box}>
       <Text>{counter}</Text>
-      {/* click event: deposit */}
-      <Text onPress={handlePress}>+1</Text>
+      <View  style={{marginTop: 10}}>
+        {/* click event: deposit */}
+        <Button onPress={handlePress} title="+1" />
+      </View>
     </View>
   );
 }

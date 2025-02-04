@@ -36,6 +36,8 @@ import AnimatedBase from './views/animated'
 // 手势
 import PanGesture from './views/gesture/pan.tsx'
 import PanAndScroll from './views/gesture/PanAndScrollView.tsx'
+// Redux
+import ToolkitRedux from './views/redux-demo/ToolkitCounter'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const BottomTab = createBottomTabNavigator<BottomStackParamList>();
@@ -163,6 +165,8 @@ function App(): React.JSX.Element {
       {/* 手势 */}
       <Stack.Screen name="PanGesture" component={PanGesture} />
       <Stack.Screen name="PanAndScroll" component={PanAndScroll} />
+      {/* Redux */}
+      <Stack.Screen name="ToolkitRedux" component={ToolkitRedux} />
     </Stack.Navigator>
   </NavigationContainer>
   );

@@ -28,6 +28,7 @@ export type RootStackParamList = {
 
   PanGesture: undefined
   PanAndScroll: undefined
+  ToolkitRedux: undefined
 };
 
 export type BottomStackParamList = {

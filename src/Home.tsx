@@ -26,6 +26,8 @@ const HomeScreen = ({ navigation }: PolicyCommonCpntProps) => {
       {/* 手势 */}
       <Button title="PanGesture" onPress={() => handleRedirect('PanGesture')} />
       <Button title="PanAndScroll" onPress={() => handleRedirect('PanAndScroll')} />
+      {/* Redux */}
+      <Button title="ToolkitRedux" onPress={() => handleRedirect('ToolkitRedux')} />
     </View>
   );
 };
